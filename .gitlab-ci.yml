@@ -71,7 +71,7 @@ Deploy (STG):
 ##                           PRODUCTION CI/CD PIPELINE                        ##
 ################################################################################
 
-Build (STG):
+Build (PRD):
   stage: Build
   when: manual
   only:
@@ -92,10 +92,10 @@ Build (STG):
   after_script:
     - docker image ls | grep assignment
 
-Deploy (STG):
+Deploy (PRD):
   stage: Deploy
   dependencies:
-    - Build (STG)
+    - Build (PRD)
   only:
     - main
   tags:
